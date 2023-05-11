@@ -1,3 +1,5 @@
+package de.mgm.inf.mgmgame;
+
 import javax.swing.JFrame;
 import java.awt.*;
 
@@ -9,12 +11,15 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setTitle("MGM Game");
-        window.setBackground(Color.BLACK);
-        window.add(new GamePanel());
+        window.setBackground(Color.white);
+        GamePanel game = new GamePanel();
+        window.add(game);
         window.setExtendedState(JFrame.MAXIMIZED_BOTH);
         window.setUndecorated(true);
 
         window.setLocationRelativeTo(null);
         window.setVisible(true);
+
+        game.startGameThread();
     }
 }

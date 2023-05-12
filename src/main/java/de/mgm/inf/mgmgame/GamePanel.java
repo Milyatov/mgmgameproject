@@ -49,10 +49,9 @@ public class GamePanel extends JPanel implements Runnable{
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D)g;
         Dimension offset = getOffset();
-        g2.translate(offset.getWidth(), offset.getHeight());
+        //g2.clearRect((int) offset.getWidth(), (int) offset.getHeight(), SCALED_WIDTH, SCALED_HEIGHT);
+        //g2.translate(offset.getWidth(), offset.getHeight());
         player.draw(g2);
-        g2.dispose();
-        g2.clearRect((int) offset.getWidth(), (int) offset.getHeight(), SCALED_WIDTH, SCALED_HEIGHT);
     }
 
     private void paintScaledImage(Graphics2D g2d, String path, int x, int y) {

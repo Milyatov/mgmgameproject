@@ -1,12 +1,12 @@
 package de.mgm.inf.mgmgame.entity;
 
-import java.awt.image.BufferedImage;
+import java.util.HashMap;
 
 public class Entity {
 
     int x, y, speed;
 
-    public BufferedImage Front1, Back1, Side1;
+    protected HashMap<String, State> states = new HashMap<>();
 
-    String direction;
+    State currentState;
 }

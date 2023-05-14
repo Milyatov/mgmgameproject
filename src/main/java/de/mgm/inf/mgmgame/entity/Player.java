@@ -13,12 +13,18 @@ public class Player extends Entity{
     KeyMap keyMap;
     int counter = 0;
     String path = "images/player/CJ_";
+    public final int screenX;
+    public final int screenY;
 
 
     public Player(GamePanel gamePanel, KeyMap keyMap){
         this.gamePanel = gamePanel;
         this.keyMap = keyMap;
+        this.screenX = (int) (GamePanel.getScreenResolution().getWidth() / 2)-30;
+        this.screenY = (int) (GamePanel.getScreenResolution().getHeight() / 2)-48;
+
         this.setDefaultValues();
+
         this.states.put("down", new State(path, 8, "down", ""));
         this.states.put("up", new State(path, 8, "up", ""));
         this.states.put("left", new State(path, 8, "left", ""));
@@ -27,28 +33,29 @@ public class Player extends Entity{
         this.states.put("up_idle", new State(path, 10, "up", "idle_"));
         this.states.put("left_idle", new State(path, 10, "left", "idle_"));
         this.states.put("right_idle", new State(path, 10, "right", "idle_"));
+
         this.currentState = this.states.get("down");
     }
 
     public void setDefaultValues(){
-        this.x = 100;
-        this.y = 100;
+        this.worldX = (int) (GamePanel.getScreenResolution().getWidth() / 2) - 50;
+        this.worldY = (int) (GamePanel.getScreenResolution().getHeight() / 2) - 70;
         this.speed = 7;
         this.currentState = states.get("down_idle");
     }
 
     public void update(){
         if (KeyMap.isPressed(KeyEvent.VK_S)){
-            this.y += speed;
+            this.worldY += speed;
             this.currentState = states.get("down");
         } else if (KeyMap.isPressed(KeyEvent.VK_A)){
-            this.x -= speed;
+            this.worldX -= speed;
             this.currentState = states.get("left");
         } else if (KeyMap.isPressed(KeyEvent.VK_W)){
-            this.y -= speed;
+            this.worldY -= speed;
             this.currentState = states.get("up");
         } else if (KeyMap.isPressed(KeyEvent.VK_D)){
-            this.x += speed;
+            this.worldX += speed;
             this.currentState = states.get("right");
         } else {
             this.currentState = states.get(this.currentState.getDirection()+ "_idle");
@@ -63,6 +70,6 @@ public class Player extends Entity{
 
     public void draw(Graphics2D g2){
         BufferedImage image = this.currentState.getCurrentSprite();
-        g2.drawImage(image, x, y, (int) (gamePanel.getScale() * image.getWidth()), (int) (gamePanel.getScale() * image.getHeight()), null);
+        g2.drawImage(image, screenX, screenY, (int) (GamePanel.getScale() * image.getWidth()), (int) (GamePanel.getScale() * image.getHeight()), null);
     }
 }

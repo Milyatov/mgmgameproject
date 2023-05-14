@@ -22,7 +22,21 @@ jobs:
           11
           8
         distribution: 'temurin'
-    - name: Build with Gradle
+    - name: Build with Gradle for Java 8
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: build
+    - name: Patch Gradle Settings for Java 11 Build
+      run: |
+        sed -i 's/^java.version=[0-9]+$/java.version=11/g' gradle.properties
+    - name: Build with Gradle for Java 11
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: build
+    - name: Patch Gradle Settings for Java 18 Build
+      run: |
+        sed -i 's/^java.version=[0-9]+$/java.version=18/g' gradle.properties
+    - name: Build with Gradle for Java 18
       uses: gradle/gradle-build-action@v2
       with:
         arguments: build

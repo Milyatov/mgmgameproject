@@ -5,6 +5,8 @@ plugins {
 group = "de.mgm.inf.mgmgame"
 version = "1.0.0"
 
+val javaVersion = findProperty("java.version") as String
+
 repositories {
     mavenCentral()
 }
@@ -23,11 +25,12 @@ tasks {
         manifest {
             attributes("Main-Class" to "de.mgm.inf.mgmgame.Main")
         }
+        archiveBaseName.set("${project.name}-J$javaVersion")
     }
 }
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
+        languageVersion.set(JavaLanguageVersion.of(javaVersion))
     }
 }

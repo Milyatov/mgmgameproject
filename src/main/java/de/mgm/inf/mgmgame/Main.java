@@ -12,7 +12,7 @@ public class Main {
         window.setResizable(false);
         window.setTitle("MGM Game");
         window.setBackground(Color.white);
-        GamePanel game = new GamePanel();
+        GamePanel game = GamePanel.getInstance();
         window.add(game);
         window.setExtendedState(JFrame.MAXIMIZED_BOTH);
         window.setUndecorated(true);

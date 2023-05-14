@@ -7,17 +7,29 @@ import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable{
 
-    public GamePanel(){
+    static GamePanel panel;
+
+    public static GamePanel getInstance() {
+        if(panel == null) {
+            panel = new GamePanel();
+        }
+        return panel;
+    }
+
+    private GamePanel(){
+        panel = this;
         this.setSize(SCALED_WIDTH, SCALED_HEIGHT);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyMap);
         this.setFocusable(true);
         this.player = new Player(this, keyMap);
+        this.sceneManager = new SceneManager();
+        this.sceneManager.changeLevel(1);
     }
 
     KeyMap keyMap = new KeyMap();
     Player player;
-    SceneManager sceneManager = new SceneManager();
+    SceneManager sceneManager;
     boolean running = false;
     final int FPS = 60;
     Thread gameThread;
@@ -32,6 +44,10 @@ public class GamePanel extends JPanel implements Runnable{
 
     public static Dimension getScreenResolution() {
         return screenResolution;
+    }
+
+    public static Dimension getResourceDimension() {
+        return RESOURCE_DIMENSION;
     }
 
     public static double getScale() {
@@ -56,7 +72,7 @@ public class GamePanel extends JPanel implements Runnable{
         //g2.translate(offset.getWidth(), offset.getHeight());
 
         //This is just a test image, it should be replaced with a real map
-        sceneManager.draw(g2, 0, player.getWorldX(), player.getWorldY());
+        sceneManager.draw(g2, player.getWorldX(), player.getWorldY());
         player.draw(g2);
 
     }

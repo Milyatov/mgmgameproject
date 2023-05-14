@@ -28,19 +28,25 @@ jobs:
         arguments: build
     - name: Patch Gradle Settings for Java 11 Build
       run: |
+        mkdir artifacts/
+        mv build/libs/* artifacts/
         sed -i 's/^java.version=[0-9]+$/java.version=11/g' gradle.properties
     - name: Build with Gradle for Java 11
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: build
+        arguments: clean build
     - name: Patch Gradle Settings for Java 18 Build
       run: |
+        mv build/libs/* artifacts/
         sed -i 's/^java.version=[0-9]+$/java.version=18/g' gradle.properties
     - name: Build with Gradle for Java 18
       uses: gradle/gradle-build-action@v2
       with:
         arguments: build
+    - name: Prepare Java artifacts for Upload
+      run: |
+        mv build/libs/* artifacts/
     - uses: actions/upload-artifact@v3
       with:
         name: GameProject
-        path: build/libs/GameProject*.jar
+        path: artifacts/*

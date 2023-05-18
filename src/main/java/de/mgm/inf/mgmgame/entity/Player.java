@@ -38,24 +38,25 @@ public class Player extends Entity{
     }
 
     public void setDefaultValues(){
-        this.worldX = (int) (GamePanel.getScreenResolution().getWidth() / 2) - 50;
-        this.worldY = (int) (GamePanel.getScreenResolution().getHeight() / 2) - 70;
+        this.setWorldX((int) (GamePanel.getScreenResolution().getWidth() / 2) - 50);
+        this.setWorldY((int) (GamePanel.getScreenResolution().getHeight() / 2) - 70);
         this.speed = 7;
+        this.hitbox = new Dimension(20, 40);
         this.currentState = states.get("down_idle");
     }
 
     public void update(){
         if (KeyMap.isPressed(KeyEvent.VK_S)){
-            this.worldY += speed;
+            this.setWorldY(this.getWorldY() + speed);
             this.currentState = states.get("down");
         } else if (KeyMap.isPressed(KeyEvent.VK_A)){
-            this.worldX -= speed;
+            this.setWorldX(this.getWorldX() - speed);
             this.currentState = states.get("left");
         } else if (KeyMap.isPressed(KeyEvent.VK_W)){
-            this.worldY -= speed;
+            this.setWorldY(this.getWorldY() - speed);
             this.currentState = states.get("up");
         } else if (KeyMap.isPressed(KeyEvent.VK_D)){
-            this.worldX += speed;
+            this.setWorldX(getWorldX() + speed);
             this.currentState = states.get("right");
         } else {
             this.currentState = states.get(this.currentState.getDirection()+ "_idle");

@@ -25,8 +25,10 @@ public class GamePanel extends JPanel implements Runnable{
         this.player = new Player(this, keyMap);
         this.sceneManager = new SceneManager();
         this.sceneManager.changeLevel(1);
+        this.metaDataObject = new MetaDataObject(new Dimension (200, 200), this.player, 100, 100);
     }
 
+    MetaDataObject metaDataObject;
     KeyMap keyMap = new KeyMap();
     Player player;
     SceneManager sceneManager;

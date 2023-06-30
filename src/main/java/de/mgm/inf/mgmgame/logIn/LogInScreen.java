@@ -20,7 +20,6 @@ public class LogInScreen extends JPanel{
             public void mousePressed(MouseEvent e) {
                 System.out.printf("%d, %d %n", e.getX(), e.getY());
                 if (e.getX() > 635 && e.getX() < 880 && e.getY() > 525 && e.getY() < 595){
-                    System.out.println("nice");
                     Main.startPlayerID();
                 }
             }

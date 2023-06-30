@@ -25,8 +25,10 @@ public class GamePanel extends JPanel implements Runnable{
         this.player = new Player(this, keyMap);
         this.sceneManager = new SceneManager();
         this.sceneManager.changeLevel(1);
+        this.metaDataObject = new MetaDataObject(new Dimension (200, 200), this.player, 100, 100);
     }
 
+    MetaDataObject metaDataObject;
     KeyMap keyMap = new KeyMap();
     Player player;
     SceneManager sceneManager;
@@ -39,8 +41,8 @@ public class GamePanel extends JPanel implements Runnable{
     @SuppressWarnings("FieldCanBeLocal")
     private static final double DEFAULT_ASPECT_RATIO = 16.0 / 9.0;
     private static final double SCREEN_ASPECT_RATIO = screenResolution.getWidth() / screenResolution.getHeight();
-    final static int SCALED_WIDTH = (int) (getScale() * RESOURCE_DIMENSION.getWidth());
-    final static int SCALED_HEIGHT = (int) (getScale() * RESOURCE_DIMENSION.getHeight());
+    public final static int SCALED_WIDTH = (int) (getScale() * RESOURCE_DIMENSION.getWidth());
+    public final static int SCALED_HEIGHT = (int) (getScale() * RESOURCE_DIMENSION.getHeight());
 
     public static Dimension getScreenResolution() {
         return screenResolution;

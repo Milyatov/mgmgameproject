@@ -1,28 +1,20 @@
 package de.mgm.inf.mgmgame.entity;
 
+import de.mgm.inf.mgmgame.GameObject;
+
+import java.awt.*;
 import java.util.HashMap;
 
-public class Entity {
+public class Entity extends GameObject {
 
-    int worldX, worldY, speed;
+    int speed;
+    Dimension hitbox;
 
     protected HashMap<String, State> states = new HashMap<>();
 
     State currentState;
 
-    public int getWorldX() {
-        return worldX;
-    }
-
-    public void setWorldX(int worldX) {
-        this.worldX = worldX;
-    }
-
-    public int getWorldY() {
-        return worldY;
-    }
-
-    public void setWorldY(int worldY) {
-        this.worldY = worldY;
+    public Dimension getHitbox(){
+        return this.hitbox;
     }
 }

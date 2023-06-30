@@ -41,8 +41,8 @@ public class GamePanel extends JPanel implements Runnable{
     @SuppressWarnings("FieldCanBeLocal")
     private static final double DEFAULT_ASPECT_RATIO = 16.0 / 9.0;
     private static final double SCREEN_ASPECT_RATIO = screenResolution.getWidth() / screenResolution.getHeight();
-    final static int SCALED_WIDTH = (int) (getScale() * RESOURCE_DIMENSION.getWidth());
-    final static int SCALED_HEIGHT = (int) (getScale() * RESOURCE_DIMENSION.getHeight());
+    public final static int SCALED_WIDTH = (int) (getScale() * RESOURCE_DIMENSION.getWidth());
+    public final static int SCALED_HEIGHT = (int) (getScale() * RESOURCE_DIMENSION.getHeight());
 
     public static Dimension getScreenResolution() {
         return screenResolution;

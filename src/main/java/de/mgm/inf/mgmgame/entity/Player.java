@@ -39,7 +39,7 @@ public class Player extends Entity{
 
     public void setDefaultValues(){
         this.setWorldX((int) (GamePanel.getScreenResolution().getWidth() / 2) - 50);
-        this.setWorldY((int) (GamePanel.getScreenResolution().getHeight() / 2) - 70);
+        this.setWorldY((int) (GamePanel.getScreenResolution().getHeight() / 2) - 50);
         this.speed = 7;
         this.hitbox = new Dimension(20, 40);
         this.currentState = states.get("down_idle");

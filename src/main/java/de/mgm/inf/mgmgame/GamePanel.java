@@ -69,11 +69,6 @@ public class GamePanel extends JPanel implements Runnable{
     @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D)g;
-        //Dimension offset = getOffset();
-        //g2.clearRect((int) offset.getWidth(), (int) offset.getHeight(), SCALED_WIDTH, SCALED_HEIGHT);
-        //g2.translate(offset.getWidth(), offset.getHeight());
-
-        //This is just a test image, it should be replaced with a real map
         sceneManager.draw(g2, player.getWorldX(), player.getWorldY());
         player.draw(g2);
 
@@ -83,6 +78,7 @@ public class GamePanel extends JPanel implements Runnable{
         this.gameThread = new Thread(this);
         gameThread.start();
     }
+
 
     @Override
     public void run() {
